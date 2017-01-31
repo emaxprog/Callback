@@ -1,0 +1,11 @@
+plugin:
+    name: 'em.callback::lang.plugin.name'
+    description: 'em.callback::lang.plugin.description'
+    author: Em
+    icon: oc-icon-mail-reply
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Callback
+        url: /
+        icon: icon-life-ring
