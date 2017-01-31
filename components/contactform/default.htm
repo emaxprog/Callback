@@ -1,12 +1,11 @@
-<form id="callback_form" data-request="onSend"
-      data-request-success="if(data.success) alert('Сообщение успешно отправлено!')">
+<form id="callback_form" data-request="onSend" data-request-validate data-request-flash>
     <input type="text" name="name" placeholder="Ваше имя..." value="{{ name }}">
-    {{ errors.first('name') }}
+    <span data-validate-for="name"></span>
     <input type="email" name="email" placeholder="Ваше E-mail..." value="{{ email }}">
-    {{ errors.first('email') }}
+    <span data-validate-for="email"></span>
     <input type="text" name="phone" placeholder="Ваш телефон..." value="{{ phone }}">
-    {{ errors.first('phone') }}
+    <span data-validate-for="phone"></span>
     <textarea name="message" placeholder="Ваше сообщение...">{{ message }}</textarea>
-    {{ errors.first('message') }}
-    <button type="submit">Отправить</button>
+    <span data-validate-for="message"></span>
+    <button type="submit" data-attach-loading>Отправить</button>
 </form>

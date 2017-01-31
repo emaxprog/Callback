@@ -11,7 +11,10 @@ $(document).ready(function () {
                 },
                 phone: {
                     required: true,
-                    digits: true,
+                    digits: true
+                },
+                message: {
+                    required: true
                 }
             },
             messages: {
@@ -25,6 +28,9 @@ $(document).ready(function () {
                 phone: {
                     required: 'Это поле обязательно для заполнения',
                     digits: 'Телефон должен состоять только из цифр'
+                },
+                message: {
+                    required: 'Это поле обязательно для заполнения'
                 }
             }
         }

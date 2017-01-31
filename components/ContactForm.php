@@ -1,9 +1,9 @@
 <?php namespace Em\Callback\Components;
 
 use Cms\Classes\ComponentBase;
+use October\Rain\Exception\ValidationException;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Mail;
 use October\Rain\Support\Facades\Flash;
 
@@ -51,20 +51,18 @@ class ContactForm extends ComponentBase
         ];
 
         $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return Redirect::back()->withInput()->withErrors($validator);
-        } else {
-            $vars = ['name' => post('name'), 'email' => post('email'), 'phone' => post('phone'), 'content' => post('message')];
+        if ($validator->fails())
+            throw new ValidationException($validator);
 
-            Mail::send('em.callback::mail.message', $vars, function ($message) {
+        $vars = ['name' => post('name'), 'email' => post('email'), 'phone' => post('phone'), 'content' => post('message')];
 
-                $message->to($this->property('email'), $this->property('siteName'));
-                $message->subject($this->property('subject'));
-            });
-            return [
-                'success' => true
-            ];
-        }
+        Mail::send('em.callback::mail.message', $vars, function ($message) {
+
+            $message->to($this->property('email'), $this->property('siteName'));
+            $message->subject($this->property('subject'));
+        });
+
+        Flash::success('Сообщение успешно отправлено!');
     }
 
     public function onRun()
