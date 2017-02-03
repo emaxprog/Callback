@@ -1,11 +1,15 @@
 <form id="callback_form" data-request="onSend" data-request-validate data-request-flash>
-    <input type="text" name="name" placeholder="Ваше имя..." value="{{ name }}">
+    <label for="name">Имя</label>
+    <input type="text" name="name" placeholder="Ваше имя..." value="{{ name }}" id="name">
     <span data-validate-for="name"></span>
-    <input type="email" name="email" placeholder="Ваш E-mail..." value="{{ email }}">
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="Ваш E-mail..." value="{{ email }}" id="email">
     <span data-validate-for="email"></span>
-    <input type="text" name="phone" placeholder="Ваш телефон..." value="{{ phone }}">
+    <label for="phone">Телефон</label>
+    <input type="text" name="phone" placeholder="Ваш телефон..." value="{{ phone }}" id="phone">
     <span data-validate-for="phone"></span>
-    <textarea name="message" placeholder="Ваше сообщение...">{{ message }}</textarea>
+    <label for="message">Сообщение</label>
+    <textarea name="message" placeholder="Ваше сообщение..." id="message">{{ message }}</textarea>
     <span data-validate-for="message"></span>
     <button type="submit" data-attach-loading>Отправить</button>
 </form>
